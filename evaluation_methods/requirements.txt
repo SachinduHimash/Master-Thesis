@@ -1,0 +1,7 @@
+numpy
+jensenshannon
+euclidean_distances
+TfidfVectorizer
+cosine_similarity
+entropy
+wilcoxon
