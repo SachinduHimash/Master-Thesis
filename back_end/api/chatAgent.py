@@ -1,6 +1,5 @@
 from langchain_ollama import OllamaLLM
 from langchain_core.prompts import ChatPromptTemplate, PromptTemplate
-from .fuzzySystem import checkValues
 from .utils.tree_utils import TreeManager
 from .utils.text_meaning_utils import getTheMeaningofText
 from .fuzzy_systems.fuzzySystem_Focus_on_life_and_well_being import calculate_life_wellbeing
@@ -72,10 +71,10 @@ def handle_conversation(data):
         result2 = evaluate_nodes(tree_id,context,result)
         # print("result1:",result,"result2",result2)
         tree =  TreeManager.get_tree(tree_id)
-        return {"result":result2,"tree":tree}
+        return {"result":result2,"tree":tree,"input":result}
         
     else:
-        return {"result":result}
+        return {"result":"","input":result}
     
 def calculate_values(result,tree_id):
     
@@ -91,17 +90,14 @@ def calculate_values(result,tree_id):
         if key in function_mapping:
             function_mapping[key](result, tree_id,value)
     
-    # calculate_life_wellbeing(result,tree_id)
-    # calculate_targeting_vulnerable(result,tree_id)
-    # calculate_comprehensive_care(result,tree_id)
-    # calculate_preserving_dignity(result,tree_id)
     
 def evaluate_nodes(tree_id, context, result):
+    cycle = 0
     while True:
         outputThreeData = TreeManager.find_node_with_max_diff_and_least_leaf_value(tree_id)
         print("Evaluating nodes", outputThreeData)
 
-        if outputThreeData is not None and outputThreeData['max_diff_child'] is not None:
+        if outputThreeData is not None and outputThreeData['max_diff_child'] is not None and cycle < 5:
             question = outputThreeData['max_diff_child'].prompt
             formatted_prompt2 = prompt_template.format(context=context, question=question, max_tokens=300)
 
@@ -110,6 +106,8 @@ def evaluate_nodes(tree_id, context, result):
             calculate_values(result2, tree_id)  # Update fuzzy system with refined answer
 
             context += f"\nUser: {question}\nAI: {result2}"
+            print("result2:", result2)
+            cycle += 1
             result = result2  
             
         else:

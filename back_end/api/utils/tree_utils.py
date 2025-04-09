@@ -51,7 +51,7 @@ class TreeManager:
             
             # Root node
             humanity = TreeNode(name="Humanity")
-            alpha_cut = 50
+            alpha_cut = 40
             # First level nodes
             focus_on_life = TreeNode(name="Focus on Life and Well-being",alpha_cut=alpha_cut)
             targeting_vulnerable_populations = TreeNode(name="Targeting Vulnerable Populations",alpha_cut=alpha_cut)

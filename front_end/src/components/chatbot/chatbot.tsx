@@ -14,6 +14,8 @@ export default function Chatbot() {
 
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState<string>("");
+  const [initialInput, setInitialInput] = useState<string>("");
+
   const [loading, setLoading] = useState<boolean>(false);
 
   const sendMessage = async () => {
@@ -41,6 +43,8 @@ export default function Chatbot() {
 
       localStorage.setItem("tree", JSON.stringify(responseData.tree));
       localStorage.setItem("reply",  responseData.result);
+      localStorage.setItem("initialInput",  responseData.input);
+
 
 
       const botMessage: Message = { role: "bot", content: responseData.result};
@@ -59,12 +63,16 @@ export default function Chatbot() {
   useEffect(() => {
     const message = localStorage.getItem("message");
     const reply = localStorage.getItem("reply");
+    const initialInput = localStorage.getItem("initialInput");
 
-    if (message && reply) {
+
+    if (message && reply ) {
       const userMessage: Message = { role: "user", content: message };
       const botMessage: Message = { role: "bot", content: reply };
 
       setMessages([...messages, ...[userMessage,botMessage]]);
+
+      setInitialInput(initialInput !== null ? initialInput : "");
     }
   }, []);
 
@@ -95,9 +103,13 @@ export default function Chatbot() {
           )}
         />
         <Spin fullscreen spinning={loading} indicator={<LoadingOutlined spin />} size="large" />
+    
       </Card>
     </Content>
-
+    <Card style={{ width: 400, height: "70vh", overflow: "auto" }}>
+          <Text>{initialInput}</Text>
+        </Card>
+    
   </div>
   )
 }

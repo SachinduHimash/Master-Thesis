@@ -15,7 +15,7 @@ def give_prompt(keyword):
         f"but enhance it by naturally incorporating elements related to {keyword}. "
         "Make the additions seamless and non-intrusive, ensuring the original message "
         "remains clear and authentic. Do not replace entire sentences; instead, enrich "
-        "them with small, meaningful adjustments."
+        "them with small, meaningful adjustments.""Return only the modified text without any additional commentary."
         )  
         return prompt_template  
 

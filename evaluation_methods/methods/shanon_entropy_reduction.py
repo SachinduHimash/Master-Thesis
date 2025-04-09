@@ -12,12 +12,12 @@ def compute_entropy(text):
     # Compute Shannon Entropy
     return entropy(token_probs, base=2)
 
-# Example responses
-pre_fuzzy_text = "Humanitarian aid is crucial in times of crisis."
-post_fuzzy_text = "Providing humanitarian assistance is essential during emergencies."
 
-# Compute entropy values
-pre_entropy = compute_entropy(pre_fuzzy_text)
-post_entropy = compute_entropy(post_fuzzy_text)
 
-print("Entropy Reduction:", pre_entropy - post_entropy)
+def shanon_entropy_reduction(pre_fuzzy_text, post_fuzzy_text):
+    # Compute entropy values
+    pre_entropy = compute_entropy(pre_fuzzy_text)
+    post_entropy = compute_entropy(post_fuzzy_text)
+
+    return pre_entropy - post_entropy
+
