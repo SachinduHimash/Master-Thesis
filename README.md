@@ -1,1 +1,1 @@
-# Master-Thesis
+# Fuzzy Logic for Evaluating AI-Generated Texts
