@@ -1,7 +1,7 @@
 # Fuzzy Logic Framework for Evaluating LLM-Generated Texts  
 *A Master Thesis Project — Ghamaathige Sachindu Himash Peiris*
 
-This repository contains the full implementation of my master's thesis project titled **"Fuzzy Logic for Evaluating LLM-Generated Texts: A Framework for Humanitarian Alignment and Ethical Assessment"**, completed at the University of Fribourg in April 2025.
+This repository contains the full implementation of my master's thesis project titled **"Fuzzy Logic for Evaluating LLM-Generated Texts: A Framework for Humanitarian Alignment and Ethical Assessment"**, completed at the University of Fribourg in May 2025.
 
 ## 🧠 Project Overview
 
