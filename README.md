@@ -1,1 +1,1 @@
-# Fuzzy Logic for Evaluating AI-Generated Texts
+# Fuzzy Logic for Evaluating LLM-Generated Texts
